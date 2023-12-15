@@ -1,26 +1,20 @@
-import CreationPage from "./Components/CreationPage"
-import TaskListing from "./Components/TaskListing"
-import {Switch,Route,Redirect} from 'react-router-dom'
-import './styles.css'
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import TaskList from './TaskList';
+import TaskCreate from './TaskCreate';
+import TaskEdit from './TaskEdit';
 
-function App() {
-  
+const App = () => {
   return (
-    <>
-      <h1>Task Manager</h1>
+    <Router>
       <Switch>
-        <Route exact path="/">
-          <TaskListing/>
-        </Route>
-        <Route path='/create'>
-          <CreationPage />
-        </Route>
-        <Route path="*">
-          <Redirect to="/" />
-        </Route>
+        <Route path="/" exact component={TaskList} />
+        <Route path="/create" component={TaskCreate} />
+        <Route path="/edit/:id" component={TaskEdit} />
       </Switch>
-    </>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;

@@ -14,14 +14,14 @@ const getAllTasks = async (req, res) => {
 // Controller to create a new task
 const createTask = async (req, res) => {
   try {
-    const { title, description, dueDate } = req.body;
+    const { title, description, dueDate, status } = req.body;
 
     // Validate inputs
-    if (!title || !description || !dueDate || new Date(dueDate) < new Date()) {
+    if (!title || !description || !status || !dueDate || new Date(dueDate) < new Date()) {
       return res.status(400).json({ error: 'Invalid task details' });
     }
 
-    const newTask = await Task.create({ title, description, dueDate });
+    const newTask = await Task.create({ title, description, dueDate, status });
     res.status(201).json(newTask);
   } catch (error) {
     console.error(error);
@@ -32,17 +32,52 @@ const createTask = async (req, res) => {
 // Controller to update a task
 const updateTask = async (req, res) => {
   try {
-    const { title, description, dueDate } = req.body;
+    const { title, description, dueDate , status} = req.body;
 
     // Validate inputs
-    if (!title || !description || !dueDate || new Date(dueDate) < new Date()) {
+    if (!title || !description || status || !dueDate || new Date(dueDate) < new Date()) {
       return res.status(400).json({ error: 'Invalid task details' });
     }
 
     const updatedTask = await Task.findByIdAndUpdate(
       req.params.id,
-      { title, description, dueDate },
+      { title, description, dueDate, status },
       { new: true }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    res.json({ message: 'Task updated successfully', updatedTask });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+const updateTaskFields = async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const { title, description, dueDate, status } = req.body;
+
+    // Validate inputs
+    if (!title && !description && !dueDate && !status) {
+      return res.status(400).json({ error: 'No fields to update' });
+    }
+
+    // Create an object with the fields to update
+    const updatedFields = {};
+    if (title) updatedFields.title = title;
+    if (description) updatedFields.description = description;
+    if (dueDate) updatedFields.dueDate = dueDate;
+    if (status) updatedFields.status = status;
+
+    // Update the task with the specified fields
+    const updatedTask = await Task.findByIdAndUpdate(
+      taskId,
+      updatedFields,
+      { new: true } // Return the updated task
     );
 
     if (!updatedTask) {
@@ -78,4 +113,5 @@ module.exports = {
   createTask,
   updateTask,
   deleteTask,
+  updateTaskFields,
 };
