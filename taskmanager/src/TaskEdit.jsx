@@ -1,7 +1,7 @@
 // TaskEdit.js
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-
+import './TaskEdit.css'
 const TaskEdit = () => {
   const { id } = useParams();
   const [task, setTask] = useState({});
@@ -62,30 +62,31 @@ const TaskEdit = () => {
       .catch((error) => console.error('Error updating task:', error));
   };
 
+ 
   return (
-    <div>
+    <div className="task-edit-container">
       <h2>Task Editing Page</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="task-edit-form" onSubmit={handleSubmit}>
+        <label className="task-edit-label">
           Title:
-          <input type="text" name="title" value={formData.title} onChange={handleInputChange} />
+          <input className="task-edit-input" type="text" name="title" value={formData.title} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-edit-label">
           Description:
-          <input type="text" name="description" value={formData.description} onChange={handleInputChange} />
+          <input className="task-edit-input" type="text" name="description" value={formData.description} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-edit-label">
           Due Date:
-          <input type="date" name="dueDate" value={formData.dueDate} onChange={handleInputChange} />
+          <input className="task-edit-input" type="date" name="dueDate" value={formData.dueDate} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-edit-label">
           Status:
-          <select name="status" value={formData.status} onChange={handleInputChange}>
+          <select className="task-edit-select" name="status" value={formData.status} onChange={handleInputChange}>
             <option value="Not Completed">Not Completed</option>
             <option value="Completed">Completed</option>
           </select>
         </label>
-        <button type="submit">Update Task</button>
+        <button className="task-edit-button" type="submit">Update Task</button>
       </form>
     </div>
   );

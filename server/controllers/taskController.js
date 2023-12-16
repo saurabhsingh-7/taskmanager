@@ -29,32 +29,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// Controller to update a task
-const updateTask = async (req, res) => {
-  try {
-    const { title, description, dueDate , status} = req.body;
 
-    // Validate inputs
-    if (!title || !description || status || !dueDate || new Date(dueDate) < new Date()) {
-      return res.status(400).json({ error: 'Invalid task details' });
-    }
-
-    const updatedTask = await Task.findByIdAndUpdate(
-      req.params.id,
-      { title, description, dueDate, status },
-      { new: true }
-    );
-
-    if (!updatedTask) {
-      return res.status(404).json({ message: 'Task not found' });
-    }
-
-    res.json({ message: 'Task updated successfully', updatedTask });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-};
 
 const updateTaskFields = async (req, res) => {
   try {
@@ -130,7 +105,6 @@ const deleteTask = async (req, res) => {
 module.exports = {
   getAllTasks,
   createTask,
-  updateTask,
   deleteTask,
   updateTaskFields,
   getTaskById,

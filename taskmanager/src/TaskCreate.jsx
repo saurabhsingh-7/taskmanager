@@ -1,7 +1,7 @@
 // TaskCreate.js
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import './TaskCreate.css'
 const TaskCreate = () => {
   const [formData, setFormData] = useState({ title: '', description: '', dueDate: '', status: 'Completed' });
   const history = useHistory();
@@ -44,29 +44,29 @@ const TaskCreate = () => {
   };
 
   return (
-    <div>
+    <div className="task-create-container">
       <h2>Task Creation Page</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="task-create-form" onSubmit={handleSubmit}>
+        <label className="task-create-label">
           Title:
-          <input type="text" name="title" value={formData.title} onChange={handleInputChange} />
+          <input className="task-create-input" type="text" name="title" value={formData.title} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-create-label">
           Description:
-          <input type="text" name="description" value={formData.description} onChange={handleInputChange} />
+          <input className="task-create-input" type="text" name="description" value={formData.description} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-create-label">
           Due Date:
-          <input type="date" name="dueDate" value={formData.dueDate} onChange={handleInputChange} />
+          <input className="task-create-input" type="date" name="dueDate" value={formData.dueDate} onChange={handleInputChange} />
         </label>
-        <label>
+        <label className="task-create-label">
           Status:
-          <select name="status" value={formData.status} onChange={handleInputChange}>
+          <select className="task-create-select" name="status" value={formData.status} onChange={handleInputChange}>
             <option value="Not Completed">Not Completed</option>
             <option value="Completed">Completed</option>
           </select>
         </label>
-        <button type="submit">Create Task</button>
+        <button className="task-create-button" type="submit">Create Task</button>
       </form>
     </div>
   );

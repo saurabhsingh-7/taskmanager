@@ -15,7 +15,7 @@ router.get('/tasks/:id', taskController.getTaskById);
 router.post('/tasks', taskController.createTask);
 
 // PUT update a task
-router.put('/tasks/:id', taskController.updateTask);
+router.put('/tasks/:id', taskController.updateTaskFields);
 
 // DELETE delete a task
 router.delete('/tasks/:id', taskController.deleteTask);

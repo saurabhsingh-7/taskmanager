@@ -1,0 +1,41 @@
+
+.task-edit-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .task-edit-form {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .task-edit-label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .task-edit-input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .task-edit-select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .task-edit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .task-edit-button:hover {
+    background-color: #4CAF50
+  }
+  

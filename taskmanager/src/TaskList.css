@@ -1,0 +1,65 @@
+/* TaskList.css */
+
+.task-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .task-list-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .create-task-link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: auto; /* Move to the right end */
+  }
+  
+  .create-task-link:hover {
+    background-color: #45a049;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .task-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .task-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+  
+  .task-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 600px) {
+    .task-table th, .task-table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .create-task-link {
+      display: block;
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }
+  
