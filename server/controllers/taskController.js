@@ -91,6 +91,25 @@ const updateTaskFields = async (req, res) => {
   }
 };
 
+const getTaskById = async (req, res) => {
+  try {
+    const taskId = req.params.id;
+
+    // Find the task by ID
+    const task = await Task.findById(taskId);
+
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    // Return the found task
+    res.json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 // Controller to delete a task
 const deleteTask = async (req, res) => {
   try {
@@ -114,4 +133,5 @@ module.exports = {
   updateTask,
   deleteTask,
   updateTaskFields,
+  getTaskById,
 };

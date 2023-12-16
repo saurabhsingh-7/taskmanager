@@ -7,6 +7,10 @@ const taskController = require('../controllers/taskController'); // Adjust the p
 // GET all tasks
 router.get('/tasks', taskController.getAllTasks);
 
+router.get('/tasks/:id', taskController.getTaskById);
+
+
+
 // POST create a new task
 router.post('/tasks', taskController.createTask);
 
@@ -15,6 +19,9 @@ router.put('/tasks/:id', taskController.updateTask);
 
 // DELETE delete a task
 router.delete('/tasks/:id', taskController.deleteTask);
+
+
+
 
 module.exports = router;
 
