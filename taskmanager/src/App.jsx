@@ -1,9 +1,8 @@
-// App.js
-import React from 'react';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import TaskList from './TaskList';
-import TaskCreate from './TaskCreate';
-import TaskEdit from './TaskEdit';
+import TaskList from './components/TaskList';
+import TaskCreate from './components/TaskCreate';
+import TaskEdit from './components/TaskEdit';
 
 const App = () => {
   return (

@@ -1,5 +1,3 @@
-/* TaskList.css */
-
 .task-list-container {
     max-width: 800px;
     margin: 0 auto;
@@ -11,15 +9,21 @@
     color: #333;
     margin-bottom: 20px;
   }
-  
+  .header-link
+  {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   .create-task-link {
     display: inline-block;
     background-color: #4CAF50;
     color: white;
-    padding: 10px 15px;
+    padding: 5px 10px;
     text-decoration: none;
     border-radius: 5px;
-    margin-left: auto; /* Move to the right end */
+    margin-left: auto;
+    height: 20px; /* Move to the right end */
   }
   
   .create-task-link:hover {
@@ -48,6 +52,22 @@
   .task-actions {
     display: flex;
     justify-content: space-between;
+  }
+  
+
+  .edit-button, .delete-button {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover, .delete-button:hover {
+    background-color: #2980b9;
   }
   
   @media (max-width: 600px) {

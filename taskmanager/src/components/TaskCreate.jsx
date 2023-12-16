@@ -1,7 +1,7 @@
-// TaskCreate.js
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './TaskCreate.css'
+import '../components/TaskCreate.css'
 const TaskCreate = () => {
   const [formData, setFormData] = useState({ title: '', description: '', dueDate: '', status: 'Completed' });
   const history = useHistory();

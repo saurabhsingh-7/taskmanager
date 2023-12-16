@@ -1,7 +1,7 @@
-// TaskEdit.js
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import './TaskEdit.css'
+import '../components/TaskEdit.css'
 const TaskEdit = () => {
   const { id } = useParams();
   const [task, setTask] = useState({});
