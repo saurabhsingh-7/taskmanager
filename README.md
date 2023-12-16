@@ -1,4 +1,5 @@
 # taskmanager
+### Application Hosted Link : (https://taskmanager-sigma-liart.vercel.app/)
 ## Frontend Setup
 
 ### Technologies Used
