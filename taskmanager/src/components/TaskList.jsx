@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import '../components/TaskList.css'
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    // Fetch tasks from the API
+    // Fetch tasks from the API to show the list of tasks and their associated information
     fetch('https://task-manager-3407.onrender.com/api/taskmanager/tasks')
       .then((response) => response.json())
-      .then((data) => setTasks(data))
-      .catch((error) => console.error('Error fetching tasks:', error));
+      .then((data) => {
+        setTasks(data);
+        setIsLoading(false); // Set loading to false when data is fetched
+      })
+      .catch((error) => {
+        console.error('Error fetching tasks:', error);
+        setIsLoading(false); // Set loading to false on error as well
+      });
   }, []);
 
   const handleDelete = (taskId) => {
@@ -35,7 +41,13 @@ const TaskList = () => {
       <h2 className="task-list-heading">Task Listing Page</h2>
       <Link to="/create" className="create-task-link">Create New Task</Link>
       </div>
-      <table className="task-table">
+
+      {isLoading ? ( // Display spinner while loading
+        <div className="loading-spinner">
+          <div className="loading-spinner"></div>
+        </div>
+      ): 
+      (<table className="task-table">
         <thead>
           <tr>
             <th>Title</th>
@@ -59,7 +71,7 @@ const TaskList = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>)}
     </div>
   );
 };
